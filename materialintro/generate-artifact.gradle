@@ -54,14 +54,22 @@ def groupId = project.PUBLISH_GROUP_ID
 def artifactId = project.PUBLISH_ARTIFACT_ID
 def version = project.PUBLISH_VERSION+"-SNAPSHOT"
 
-def mavenUrl = "http://jhinton-dev.rapidsos.com:8081/artifactory/emergency-sdk"
-def mavenUrlSnapshot = "http://jhinton-dev.rapidsos.com:8081/artifactory/emergency-sdk-snapshot"
+def mavenUrl = getMavenUrl()
+def mavenUrlSnapshot = getMavenUrlSnapshot()
 
 def localReleaseDest = "${buildDir}/release/${version}"
 
 
 def isReleaseBuild() {
     return version.contains("SNAPSHOT") == false
+}
+
+def getMavenUrl(){
+    return property("MAVEN_URL")
+}
+
+def getMavenUrlSnapshot(){
+    return property("MAVEN_URL_SNAPSHOT")
 }
 
 def getRepositoryUsername() {

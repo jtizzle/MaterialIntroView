@@ -140,9 +140,19 @@ public class MaterialIntroView extends RelativeLayout {
     private TextView textViewInfo;
 
     /**
+     * Infor Dialog Title
+     */
+    private TextView textViewInfoTitle;
+
+    /**
      * Info dialog text color
      */
     private int colorTextViewInfo;
+
+    /**
+     * Info dialog title color
+     */
+    private int colorTextViewInfoTitle;
 
     /**
      * Info dialog will be shown
@@ -236,6 +246,7 @@ public class MaterialIntroView extends RelativeLayout {
         fadeAnimationDuration = Constants.DEFAULT_FADE_DURATION;
         padding = Constants.DEFAULT_TARGET_PADDING;
         colorTextViewInfo = Constants.DEFAULT_COLOR_TEXTVIEW_INFO;
+        colorTextViewInfoTitle = Constants.DEFAULT_COLOR_TEXTVIEW_INFO;
         focusType = Focus.ALL;
         focusGravity = FocusGravity.CENTER;
         isReady = false;
@@ -264,6 +275,8 @@ public class MaterialIntroView extends RelativeLayout {
         infoView = layoutInfo.findViewById(R.id.info_layout);
         textViewInfo = (TextView) layoutInfo.findViewById(R.id.textview_info);
         textViewInfo.setTextColor(colorTextViewInfo);
+        textViewInfoTitle = (TextView) layoutInfo.findViewById(R.id.textview_title);
+        textViewInfoTitle.setTextColor(colorTextViewInfoTitle);
         imageViewIcon = (ImageView) layoutInfo.findViewById(R.id.imageview_icon);
 
         dotView = LayoutInflater.from(getContext()).inflate(R.layout.dotview, null);
@@ -561,6 +574,12 @@ public class MaterialIntroView extends RelativeLayout {
         textViewInfo.setTextColor(this.colorTextViewInfo);
     }
 
+    private void setColorTextViewInfoTitle(int colorTextViewInfoTitle){
+        this.colorTextViewInfoTitle = colorTextViewInfoTitle;
+        textViewInfoTitle.setTextColor(this.colorTextViewInfo);
+
+    }
+
     private void setTextViewInfo(String textViewInfo) {
         this.textViewInfo.setText(textViewInfo);
     }
@@ -569,12 +588,32 @@ public class MaterialIntroView extends RelativeLayout {
         this.textViewInfo.setText(textViewInfo);
     }
 
+    private void setTextViewInfoTitle(String textViewInfoTitle) {
+        this.textViewInfoTitle.setText(textViewInfoTitle);
+    }
+
+    private void setTextViewInfoTitleVisibility(int visibility){
+        textViewInfoTitle.setVisibility(visibility);
+    }
+
+    private void setTextViewInfoTitle(CharSequence textViewInfoTitle) {
+        this.textViewInfoTitle.setText(textViewInfoTitle);
+    }
+
     private void setTextViewInfoSize(int textViewInfoSize) {
         this.textViewInfo.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoSize);
     }
 
     private void setTextViewInfoTypeFace(Typeface typeface){
         this.textViewInfo.setTypeface(typeface);
+    }
+
+    private void setTextViewInfoTitleSize(int textViewInfoTitleSize) {
+        this.textViewInfoTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoTitleSize);
+    }
+
+    private void setTextViewInfoTitleTypeFace(Typeface typeface){
+        this.textViewInfoTitle.setTypeface(typeface);
     }
 
     private void enableInfoDialog(boolean isInfoEnabled) {
@@ -672,6 +711,11 @@ public class MaterialIntroView extends RelativeLayout {
             return this;
         }
 
+        public Builder setTitleTextColor(int textColor){
+            materialIntroView.setColorTextViewInfoTitle(textColor);
+            return this;
+        }
+
         public Builder setInfoText(String infoText) {
             materialIntroView.enableInfoDialog(true);
             materialIntroView.setTextViewInfo(infoText);
@@ -691,6 +735,31 @@ public class MaterialIntroView extends RelativeLayout {
 
         public Builder setInfoTextSize(int textSize) {
             materialIntroView.setTextViewInfoSize(textSize);
+            return this;
+        }
+
+        public Builder setInfoTextTitle(CharSequence infoTitleText){
+            materialIntroView.setTextViewInfoTitle(infoTitleText);
+            return this;
+        }
+
+        public Builder setInfoTextTitle(String infoTitleText){
+            materialIntroView.setTextViewInfoTitle(infoTitleText);
+            return this;
+        }
+
+        public Builder setInfoTextTitleSize(int textSize){
+            materialIntroView.setTextViewInfoTitleSize(textSize);
+            return this;
+        }
+
+        public Builder setInfoTextTitleTypeFace(Typeface typeFace){
+            materialIntroView.setTextViewInfoTitleTypeFace(typeFace);
+            return this;
+        }
+
+        public Builder setInfoTextTitleVisibility(int visibility){
+            materialIntroView.setTextViewInfoTitleVisibility(visibility);
             return this;
         }
 

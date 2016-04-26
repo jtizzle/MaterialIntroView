@@ -2,4 +2,5 @@
 <resources>
     <dimen name="cardview_margin">24dp</dimen>
     <dimen name="info_text_size">16sp</dimen>
+    <dimen name="info_text_title_size">20sp</dimen>
 </resources>

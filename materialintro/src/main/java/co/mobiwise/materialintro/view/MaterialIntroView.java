@@ -565,6 +565,10 @@ public class MaterialIntroView extends RelativeLayout {
         this.textViewInfo.setText(textViewInfo);
     }
 
+    private void setTextViewInfo(CharSequence textViewInfo) {
+        this.textViewInfo.setText(textViewInfo);
+    }
+
     private void setTextViewInfoSize(int textViewInfoSize) {
         this.textViewInfo.setTextSize(TypedValue.COMPLEX_UNIT_SP, textViewInfoSize);
     }
@@ -669,6 +673,12 @@ public class MaterialIntroView extends RelativeLayout {
         }
 
         public Builder setInfoText(String infoText) {
+            materialIntroView.enableInfoDialog(true);
+            materialIntroView.setTextViewInfo(infoText);
+            return this;
+        }
+
+        public Builder setInfoText(CharSequence infoText) {
             materialIntroView.enableInfoDialog(true);
             materialIntroView.setTextViewInfo(infoText);
             return this;
